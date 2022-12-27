@@ -10,6 +10,7 @@ import Ejemplo4 from './hooks/Ejemplo4';
 import GreetingStyled from './components/pure/greetingStyled';
 import Ejercicio2 from './components/pure/Ejercicio2';
 import Father from './components/container/Father';
+import OptionalRender from './components/pure/optionalRender';
 
 function App() {
     return (
@@ -36,7 +37,14 @@ function App() {
         {/* FUNCIONA: <Ejercicio2> </Ejercicio2> */}
         {/*</header> */}
 
-        <TaskListComponent></TaskListComponent>
+
+        {/* Ejemplos de renderizado condicional */}
+        <OptionalRender> </OptionalRender>
+
+
+
+
+        {/* <TaskListComponent></TaskListComponent> */}
         {/*<Father> </Father>*/}
 
         </div>
