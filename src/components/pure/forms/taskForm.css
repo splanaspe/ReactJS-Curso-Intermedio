@@ -1,0 +1,24 @@
+.input-style{
+    font-size: 0.8rem;
+    border-color: green;
+}
+
+.input-style:focus{
+    box-shadow: 0px 0px;
+    border-color: green;
+}
+
+select {
+    background-color: rgb(216, 236, 215);
+    border: none;
+    border-radius: 10px;
+    margin: 10px;
+
+}
+
+
+option {
+    background-color: rgb(216, 236, 215);
+}
+
+
