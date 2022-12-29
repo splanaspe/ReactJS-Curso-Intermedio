@@ -34,9 +34,6 @@ const LogoutButton = ({logoutAction, propStyle}) => {
     )
 }
 
-
-
-
 const OptionalRender = () => {
 
     const [access, setAccess] = useState(false);

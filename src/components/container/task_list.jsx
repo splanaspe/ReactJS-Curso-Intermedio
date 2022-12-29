@@ -16,7 +16,8 @@ const TaskListComponent = () => {
 
 
     //Estado del componente
-    const [tasks, setTasks] = useState([defaultTask1,defaultTask2,defaultTask3])
+    // 
+    const [tasks, setTasks] = useState([defaultTask1,defaultTask2,defaultTask3]);
     const [loading,setLoading]= useState(true)
 
     //Control ciclo de vida del componente
@@ -53,22 +54,10 @@ const TaskListComponent = () => {
         setTasks(tempTasks); 
     }
 
-
-
-    return (
-        <div>
-            <div className='col-12'> 
-                <div className='card'>
-                    {/* Card Header */}
-                    <div className='card-header p-3'> 
-                        <h5> 
-                            Your Tasks: 
-                        </h5>
-                    </div>
-                    {/* Card body */}
-                    <div className='card-body' data-mbd-perfect-scrollbar='true' 
-                    style={ {position: 'relative', minHeight: '400px', height: 'auto'} }>
-                        <table>
+    //esto es un componente Table
+    const Table = () => {
+        return (
+            <table>
                             <thead>
                                 <tr>
                                     <th scope='col'> Title </th>
@@ -93,6 +82,32 @@ const TaskListComponent = () => {
                                 }
                             </tbody>
                         </table>
+        )
+    }
+
+    
+    let tasksTable;
+
+    if(tasks.length > 0){
+        tasksTable = <Table> </Table>;
+    } else {
+        tasksTable = <h5> There are no tasks</h5>
+    }
+
+    return (
+        <div>
+            <div className='col-12'> 
+                <div className='card'>
+                    {/* Card Header */}
+                    <div className='card-header p-3'> 
+                        <h5> 
+                            Your Tasks: 
+                        </h5>
+                    </div>
+                    {/* Card body */}
+                    <div className='card-body' data-mbd-perfect-scrollbar='true' 
+                    style={ {position: 'relative', minHeight: '400px', height: 'auto'} }>
+                        {tasksTable}
                     </div>
                     <hr></hr>
                     <TaskForm add={addTask}> </TaskForm>

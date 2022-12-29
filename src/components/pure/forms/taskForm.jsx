@@ -48,9 +48,11 @@ const TaskForm = ({add}) => {
                     <option value={LEVELS.BLOCKING}> Blocking </option>
                     <option value={LEVELS.URGENT}> Urgent </option>
                 </select>
+                <div style={{display:'row', flexDirection:'column'}}> 
+                <button type='submit' className='btn btn-success btn-lg m-2' style = { {fontSize: '0.8rem'} } > Add</button>
+                <button type='reset' className='btn btn-danger btn-lg m-2' style = { {fontSize: '0.8rem'} } > Reset </button>
             </div>
-            <button type='submit' className='btn btn-success btn-lg m-2' style = { {fontSize: '0.8rem'} } > Add</button>
-
+            </div>
         </form>
     );
 }
