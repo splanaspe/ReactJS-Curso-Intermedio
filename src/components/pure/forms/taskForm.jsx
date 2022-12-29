@@ -4,7 +4,7 @@ import { LEVELS } from '../../../models/levels.enum';
 import { Task } from '../../../models/task.class';
 import './taskForm.css';
 
-const TaskForm = ({add}) => {
+const TaskForm = ({add, length}) => {
 
     const nameRef = useRef('');
     const descriptionRef = useRef('');
@@ -20,6 +20,22 @@ const TaskForm = ({add}) => {
         )
         add(newTask);
     }
+    const normalStyle = {
+        color: 'blue',
+        fontWeight: 'bold'
+    }
+
+    const urgentStyle = {
+        color: 'yellow',
+        fontWeight: 'bold'
+    }
+
+    const blockingStyle = {
+        color: 'red',
+        fontWeight: 'bold'
+    }
+
+
 
     return (
         <form onSubmit={addTask} 
@@ -44,12 +60,25 @@ const TaskForm = ({add}) => {
                 />
                 <label htmlFor ='selectLevel' className = 'sr-only mt-2' > Priority </label>
                 <select ref={levelRef} defaultValue={LEVELS.NORMAL} id='selectLevel'> 
-                    <option value={LEVELS.NORMAL}> Normal </option>
-                    <option value={LEVELS.BLOCKING}> Blocking </option>
-                    <option value={LEVELS.URGENT}> Urgent </option>
+                    <option 
+                        value={LEVELS.NORMAL} 
+                        style={normalStyle}> Normal 
+                    </option>
+                    <option 
+                        value={LEVELS.BLOCKING}
+                        style={blockingStyle}> 
+                        Blocking 
+                    </option>
+                    <option 
+                        value={LEVELS.URGENT}
+                        style={urgentStyle}> 
+                        Urgent 
+                    </option>
                 </select>
                 <div style={{display:'row', flexDirection:'column'}}> 
-                <button type='submit' className='btn btn-success btn-lg m-2' style = { {fontSize: '0.8rem'} } > Add</button>
+                <button type='submit' className='btn btn-success btn-lg m-2' style = { {fontSize: '0.8rem'} } > 
+                {length > 0 ? 'Add new Task' : 'Create the first task'}
+                </button>
                 <button type='reset' className='btn btn-danger btn-lg m-2' style = { {fontSize: '0.8rem'} } > Reset </button>
             </div>
             </div>
@@ -58,7 +87,8 @@ const TaskForm = ({add}) => {
 }
 
 TaskForm.prototypes = { 
-    add: PropTypes.func.isRequired
+    add: PropTypes.func.isRequired,
+    length: PropTypes.number.isRequired
 }
 
 export default TaskForm;

@@ -23,12 +23,22 @@ const TaskListComponent = () => {
     //Control ciclo de vida del componente
     useEffect(() => {
         console.log('Task State has been modified');
-        setLoading(false); //indicamos que ya no carga
+
+        setTimeout( () => {
+            setLoading(false);
+        }, 2000);
+
+         //indicamos que ya no carga
         return () => {
             console.log("TaskListcomponent is going to unmount")
         };
     }, [tasks]);
 
+    const loadingStyle = {
+        color: 'grey',
+        fontSize: '20px'
+    }
+    
     function completeTask(task){
         console.log('Complete this Task:', task);
         const index = tasks.indexOf(task);
@@ -107,10 +117,11 @@ const TaskListComponent = () => {
                     {/* Card body */}
                     <div className='card-body' data-mbd-perfect-scrollbar='true' 
                     style={ {position: 'relative', minHeight: '400px', height: 'auto'} }>
-                        {tasksTable}
+                        {/* TODO: Add login spinner */}
+                        {loading? <p style={loadingStyle}> Loading... </p> : tasksTable}
                     </div>
                     <hr></hr>
-                    <TaskForm add={addTask}> </TaskForm>
+                    <TaskForm add={addTask} length={tasks.length}> </TaskForm>
                 </div>
             </div>
         </div>

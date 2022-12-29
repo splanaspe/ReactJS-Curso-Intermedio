@@ -13,3 +13,13 @@ td, th {
     text-align: center;
     padding: 10px;
 }
+
+.task-completed{
+    color: gray;
+    text-decoration: line-through;
+}
+
+.task-pending {
+    font-weight: bold;
+    color: tomato;
+}
